@@ -1,4 +1,5 @@
 package TreesAndGraphs;
+import DummyUnit.*;
 
 public class RouteBetweenNodesTest
 {
@@ -7,14 +8,14 @@ public class RouteBetweenNodesTest
 		for (int i = 0; i < 7; ++i) {
 			graph.nodes.add(new TreesAndGraphs.Node());
 		}
-		graph.nodes.get(0).AddChild(graph.nodes.get(1));
-		graph.nodes.get(1).AddChild(graph.nodes.get(2));
-		graph.nodes.get(2).AddChild(graph.nodes.get(0));
-		graph.nodes.get(2).AddChild(graph.nodes.get(3));
-		graph.nodes.get(3).AddChild(graph.nodes.get(2));
-		graph.nodes.get(4).AddChild(graph.nodes.get(6));
-		graph.nodes.get(5).AddChild(graph.nodes.get(4));
-		graph.nodes.get(6).AddChild(graph.nodes.get(5));
+		graph.nodes.get(0).AddAdjacent(graph.nodes.get(1));
+		graph.nodes.get(1).AddAdjacent(graph.nodes.get(2));
+		graph.nodes.get(2).AddAdjacent(graph.nodes.get(0));
+		graph.nodes.get(2).AddAdjacent(graph.nodes.get(3));
+		graph.nodes.get(3).AddAdjacent(graph.nodes.get(2));
+		graph.nodes.get(4).AddAdjacent(graph.nodes.get(6));
+		graph.nodes.get(5).AddAdjacent(graph.nodes.get(4));
+		graph.nodes.get(6).AddAdjacent(graph.nodes.get(5));
 		return graph;
 	}
 
@@ -23,34 +24,34 @@ public class RouteBetweenNodesTest
 		for (int i = 0; i < 6; ++i) {
 			graph.nodes.add(new TreesAndGraphs.Node());
 		}
-		graph.nodes.get(0).AddChild(graph.nodes.get(4));
-		graph.nodes.get(0).AddChild(graph.nodes.get(5));
-		graph.nodes.get(1).AddChild(graph.nodes.get(3));
-		graph.nodes.get(1).AddChild(graph.nodes.get(4));
-		graph.nodes.get(2).AddChild(graph.nodes.get(1));
-		graph.nodes.get(3).AddChild(graph.nodes.get(2));
-		graph.nodes.get(3).AddChild(graph.nodes.get(4));
+		graph.nodes.get(0).AddAdjacent(graph.nodes.get(4));
+		graph.nodes.get(0).AddAdjacent(graph.nodes.get(5));
+		graph.nodes.get(1).AddAdjacent(graph.nodes.get(3));
+		graph.nodes.get(1).AddAdjacent(graph.nodes.get(4));
+		graph.nodes.get(2).AddAdjacent(graph.nodes.get(1));
+		graph.nodes.get(3).AddAdjacent(graph.nodes.get(2));
+		graph.nodes.get(3).AddAdjacent(graph.nodes.get(4));
 		return graph;
 	}
 
 	public static void RouteBetweenNodesGraph0() {
 		Graph graph = BuildGraph0();
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 0, 1));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 0, 3));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 3, 0));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 0, 6));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 6, 0));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 6, 4));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(0), graph.get(1)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(0), graph.get(3)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(3), graph.get(0)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(0), graph.get(6)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(6), graph.get(0)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(6), graph.get(4)));
 	}
 
 	public static void RouteBetweenNodesGraph1() {
 		Graph graph = BuildGraph1();
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 0, 3));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 0, 4));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 3, 1));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 4, 1));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 5, 0));
-		DummyUnit.DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, 1, 0));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(0), graph.get(3)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(0), graph.get(4)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(3), graph.get(1)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(4), graph.get(1)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(5), graph.get(0)));
+		DummyUnit.assertEquals(true, RouteBetweenNodes.IsRoute(graph, graph.get(1), graph.get(0)));
 	}
 
 	public static void RouteBetweenNodesTests() {

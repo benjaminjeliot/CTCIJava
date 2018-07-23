@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Node
 {
-	private ArrayList<Node> nodes = new ArrayList<>();
+	public ArrayList<Node> adjacents = new ArrayList<>();
 
-	public void AddChild(Node node) {
-		nodes.add(node);
+	public void AddAdjacent(Node node) {
+		adjacents.add(node);
 	}
 }
