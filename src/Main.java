@@ -1,6 +1,7 @@
 import java.util.*;
 import ArraysAndStrings.*;
 import TreesAndGraphs.*;
+import SortingAndSearching.*;
 
 public class Main
 {
@@ -8,5 +9,6 @@ public class Main
 	{
 		IsUniqueTest.IsUniqueTests();
 		RouteBetweenNodesTest.RouteBetweenNodesTests();
+		SortedMergeTest.SortedMergeTests();
 	}
 }
